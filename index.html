@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Krishna Vijay Hiwale – Data Science Portfolio | Python, SQL, Machine Learning, Data Visualization, Pune, Maharashtra" />
+  <meta name="keywords" content="Data Science, Python, SQL, Machine Learning, Portfolio, Krishna Hiwale, Pune, Data Analytics" />
+  <meta property="og:title" content="Krishna Vijay Hiwale | Data Science Portfolio" />
+  <meta property="og:description" content="Explore Krishna's data-driven projects and skills in an immersive 3D portfolio experience." />
+  <title>Krishna Vijay Hiwale | Data Science Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       LOADING SCREEN
+  ═══════════════════════════════════════ -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <div class="loader-ring2"></div>
+      <div class="loader-text">
+        <span class="loader-name">KH</span>
+        <p class="loader-subtitle">Initializing Portfolio…</p>
+      </div>
+      <div class="loader-progress">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+      <span class="loader-pct" id="loaderPct">0%</span>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="logo-text">KH</span>
+      <span class="logo-dot"></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hero"       class="nav-link active" data-section="hero">Home</a></li>
+      <li><a href="#about"      class="nav-link" data-section="about">About</a></li>
+      <li><a href="#skills"     class="nav-link" data-section="skills">Skills</a></li>
+      <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+      <li><a href="#projects"   class="nav-link" data-section="projects">Projects</a></li>
+      <li><a href="#contact"    class="nav-link" data-section="contact">Contact</a></li>
+    </ul>
+    <a href="mailto:krishnahiwale15@gmail.com" class="nav-cta" id="hireMeBtn">Hire Me</a>
+    <div class="nav-hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#hero"       class="mob-link">Home</a></li>
+      <li><a href="#about"      class="mob-link">About</a></li>
+      <li><a href="#skills"     class="mob-link">Skills</a></li>
+      <li><a href="#experience" class="mob-link">Experience</a></li>
+      <li><a href="#projects"   class="mob-link">Projects</a></li>
+      <li><a href="#contact"    class="mob-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════ -->
+  <section id="hero">
+    <canvas id="heroCanvas"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Open to Opportunities · Pune, Maharashtra</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-greeting">Hello, I'm</span>
+        <span class="hero-name">Krishna<br/><em>Vijay Hiwale</em></span>
+      </h1>
+
+      <div class="hero-roles">
+        <span class="role-static">I craft&nbsp;</span>
+        <span class="role-dynamic" id="typedText"></span>
+        <span class="type-cursor">|</span>
+      </div>
+
+      <p class="hero-desc">
+        Data Science student from Pune — passionate about turning raw data into powerful insights that drive real-world decisions using Python, SQL &amp; Machine Learning.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary" id="viewProjectsBtn">
+          <span>View Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn-secondary" id="getInTouchBtn">Get In Touch</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num" data-count="6">0</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="9">0</span>
+          <span class="stat-label">Tech Tools</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="3">0</span>
+          <span class="stat-label">Experiences</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="50">0</span><span class="stat-num-plus">+</span>
+          <span class="stat-label">Cities Analysed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portrait -->
+    <div class="hero-portrait">
+      <div class="portrait-ring ring-1"></div>
+      <div class="portrait-ring ring-2"></div>
+      <div class="portrait-ring ring-3"></div>
+      <div class="portrait-img-wrap">
+        <img src="about-photo.jpg" alt="Krishna Vijay Hiwale" id="portraitImg" />
+        <div class="portrait-glow"></div>
+      </div>
+      <div class="portrait-badge b1">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        <span>Data Science</span>
+      </div>
+      <div class="portrait-badge b2">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <span>Python</span>
+      </div>
+      <div class="portrait-badge b3">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <span>Analytics</span>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who Am I</span>
+        <h2 class="section-title">About <em>Me</em></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <!-- LEFT: New speaking/presenting photo -->
+        <div class="about-left">
+          <div class="about-photo-wrap glass-card">
+            <div class="about-circle-ring r1"></div>
+            <div class="about-circle-ring r2"></div>
+            <div class="about-circle-img-wrap">
+              <img src="portrait.jpg" alt="Krishna Vijay Hiwale" id="aboutImg" />
+            </div>
+            <div class="about-photo-label">
+              <span class="about-status-dot"></span>
+              <span>Speaker &amp; Analyst</span>
+            </div>
+            <div class="about-info-chips">
+              <div class="chip">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Pune, Maharashtra
+              </div>
+              <div class="chip">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                B.Sc. Data Science
+              </div>
+              <div class="chip">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                Expected Graduation: 2027
+              </div>
+              <div class="chip">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                +91 80070 99729
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Text content + Education Timeline -->
+        <div class="about-right">
+          <div class="about-text-block">
+            <h3>Transforming <em>Data</em> into Decisions</h3>
+            <p>
+              I'm a passionate Data Science student at <strong>PES Modern College of Arts, Science and Commerce, Pune</strong>, with hands-on experience in Python, SQL, machine learning, and data visualization.
+            </p>
+            <p>
+              My journey in data science started with curiosity about how numbers tell stories — and I've been building that story ever since. From developing <em>climate analytics platforms</em> covering <strong>50+ Indian cities</strong> to building mental health prediction models using Scikit-learn, I believe data has the power to change lives.
+            </p>
+            <p>
+              I combine analytical rigor with creative problem-solving to craft data-driven solutions that matter. I'm skilled in <strong>Python, SQL, Pandas, NumPy, Matplotlib, Power BI,</strong> and <strong>Tableau</strong>.
+            </p>
+          </div>
+
+          <!-- Career Objective box -->
+          <div class="career-objective-box glass-card">
+            <div class="co-icon">🎯</div>
+            <div>
+              <h4>Career Objective</h4>
+              <p>Seeking an entry-level Data Science opportunity to apply data-driven problem-solving skills, build impactful analytical solutions, and contribute to organizational growth.</p>
+            </div>
+          </div>
+
+          <!-- Education Timeline -->
+          <div class="about-edu-timeline">
+            <h4>Education Timeline</h4>
+            <div class="edu-items">
+              <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-content">
+                  <span class="edu-year">Expected 2027</span>
+                  <strong>B.Sc. in Data Science</strong>
+                  <p>PES Modern College of Arts, Science &amp; Commerce, Pune</p>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-dot" style="background: linear-gradient(135deg,#06b6d4,#a855f7)"></div>
+                <div class="edu-content">
+                  <span class="edu-year">2024</span>
+                  <strong>Higher Secondary Certificate (HSC)</strong>
+                  <p>Maharashtra State Board</p>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-dot" style="background: linear-gradient(135deg,#ec4899,#f59e0b)"></div>
+                <div class="edu-content">
+                  <span class="edu-year">2022</span>
+                  <strong>Secondary School Certificate (SSC)</strong>
+                  <p>Maharashtra Divisional Board</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SKILLS SECTION
+  ═══════════════════════════════════════ -->
+  <section id="skills">
+    <canvas id="skillsCanvas"></canvas>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">Technical <em>Skills</em></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Programming -->
+        <div class="skill-category glass-card">
+          <div class="skill-cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3>Programming Languages</h3>
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>Python</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88" style="--clr:#a855f7"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>SQL</span><span class="skill-pct">80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80" style="--clr:#06b6d4"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label"><span>C</span><span class="skill-pct">65%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65" style="--clr:#f59e0b"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Libraries & Tools -->
+        <div class="skill-category glass-card" data-category="libraries">
+          <div class="skill-cat-icon" style="--icon-clr:#06b6d4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <h3>Libraries &amp; Tools</h3>
+          <div class="skill-pills">
+            <span class="pill pill-purple">Pandas</span>
+            <span class="pill pill-cyan">NumPy</span>
+            <span class="pill pill-amber">Matplotlib</span>
+            <span class="pill pill-green">Scikit-learn</span>
+            <span class="pill pill-pink">MS Excel</span>
+            <span class="pill pill-blue">Power BI</span>
+            <span class="pill pill-orange">Tableau</span>
+          </div>
+        </div>
+
+        <!-- Data Skills -->
+        <div class="skill-category glass-card" data-category="data">
+          <div class="skill-cat-icon" style="--icon-clr:#f59e0b">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3>Data Skills</h3>
+          <div class="skill-hexagons">
+            <div class="hex-item">
+              <div class="hex"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg></div>
+              <span>Data Cleaning</span>
+            </div>
+            <div class="hex-item">
+              <div class="hex"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+              <span>Data Analysis</span>
+            </div>
+            <div class="hex-item">
+              <div class="hex"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg></div>
+              <span>Visualization</span>
+            </div>
+            <div class="hex-item">
+              <div class="hex"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></div>
+              <span>ML Models</span>
+            </div>
+            <div class="hex-item">
+              <div class="hex"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg></div>
+              <span>Feature Engg.</span>
+            </div>
+            <div class="hex-item">
+              <div class="hex"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+              <span>Prediction</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="skill-category glass-card" data-category="soft">
+          <div class="skill-cat-icon" style="--icon-clr:#ec4899">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3>Soft Skills</h3>
+          <div class="soft-skill-grid">
+            <div class="soft-skill-item">
+              <div class="soft-icon">💡</div>
+              <span>Analytical Thinking</span>
+            </div>
+            <div class="soft-skill-item">
+              <div class="soft-icon">🔍</div>
+              <span>Problem Solving</span>
+            </div>
+            <div class="soft-skill-item">
+              <div class="soft-icon">🗣️</div>
+              <span>Communication</span>
+            </div>
+            <div class="soft-skill-item">
+              <div class="soft-icon">🤝</div>
+              <span>Teamwork</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="languages-row">
+        <h3>Languages Known</h3>
+        <div class="lang-badges">
+          <div class="lang-badge">
+            <span class="lang-flag">🇬🇧</span>
+            <span>English</span>
+            <div class="lang-dots">
+              <span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span>
+            </div>
+          </div>
+          <div class="lang-badge">
+            <span class="lang-flag">🇮🇳</span>
+            <span>Marathi</span>
+            <div class="lang-dots">
+              <span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span>
+            </div>
+          </div>
+          <div class="lang-badge">
+            <span class="lang-flag">🇮🇳</span>
+            <span>Hindi</span>
+            <div class="lang-dots">
+              <span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot active"></span><span class="dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       EXPERIENCE SECTION
+  ═══════════════════════════════════════ -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Work History</span>
+        <h2 class="section-title">Experience &amp; <em>Internship</em></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="exp-timeline">
+        <div class="timeline-line"></div>
+
+        <!-- IBM SkillsBuild AI Internship -->
+        <div class="exp-item reveal-item">
+          <div class="exp-dot-wrap">
+            <div class="exp-dot" style="--dot-clr:#06b6d4"></div>
+          </div>
+          <div class="exp-card glass-card">
+            <div class="exp-header">
+              <div>
+                <span class="exp-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;border-color:rgba(6,182,212,0.3)">AI &amp; Automation Internship</span>
+                <h3>AI Automation &amp; Intelligent Solutions Intern</h3>
+                <p class="exp-company">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                  BharatCares (in assoc. with AICTE &amp; IBM SkillsBuild)
+                </p>
+              </div>
+              <div class="exp-date">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                June – July 2026
+              </div>
+            </div>
+            <ul class="exp-points">
+              <li>Completed a 6-week internship focused on Artificial Intelligence, AI Automation, Agentic AI, Intelligent Automation, Workflow Orchestration, and AI solution development</li>
+              <li>Participated in expert-led masterclasses covering AI automation basics, workflow design, AI integration, and enterprise AI trends</li>
+              <li>Built practical understanding through project-based learning, mentorship, and real-world AI solution development</li>
+              <li>Strengthened skills in Machine Learning, Data Analytics, problem-solving, critical thinking, innovation, and applied AI</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Agentic AI</span><span>AI Automation</span><span>Workflow Orchestration</span><span>Machine Learning</span><span>IBM SkillsBuild</span><span>AICTE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sunanda Infotech -->
+        <div class="exp-item reveal-item">
+          <div class="exp-dot-wrap">
+            <div class="exp-dot" style="--dot-clr:#a855f7"></div>
+          </div>
+          <div class="exp-card glass-card">
+            <div class="exp-header">
+              <div>
+                <span class="exp-badge">IT Internship</span>
+                <h3>IT Intern</h3>
+                <p class="exp-company">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                  Sunanda Infotech Pvt. Ltd.
+                </p>
+              </div>
+              <div class="exp-date">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                June – July 2023
+              </div>
+            </div>
+            <ul class="exp-points">
+              <li>Worked on real-time projects involving programming and data analysis</li>
+              <li>Performed data handling and processing using Python and Excel</li>
+              <li>Assisted in software development tasks and collaborated with team members</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Python</span><span>Excel</span><span>Data Analysis</span><span>Software Development</span><span>Team Collaboration</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deloitte Forage -->
+        <div class="exp-item reveal-item">
+          <div class="exp-dot-wrap">
+            <div class="exp-dot" style="--dot-clr:#06b6d4"></div>
+          </div>
+          <div class="exp-card glass-card">
+            <div class="exp-header">
+              <div>
+                <span class="exp-badge" style="background:rgba(6,182,212,0.12);color:#06b6d4;border-color:rgba(6,182,212,0.3)">Virtual Simulation</span>
+                <h3>Data Analytics Job Simulation</h3>
+                <p class="exp-company">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                  Deloitte Australia — Forage
+                </p>
+              </div>
+              <div class="exp-date">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                March 2026
+              </div>
+            </div>
+            <ul class="exp-points">
+              <li>Worked on real-world business scenarios involving data analytics and forensic technology</li>
+              <li>Designed an interactive Tableau dashboard to visualize key business insights</li>
+              <li>Performed data classification and analysis using Excel to support decision-making</li>
+              <li>Applied analytical thinking to solve real-world business problems</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Tableau</span><span>Excel</span><span>Business Analytics</span><span>Forensic Technology</span><span>Data Classification</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PROJECTS SECTION
+  ═══════════════════════════════════════ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Built</span>
+        <h2 class="section-title">Featured <em>Projects</em></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- ─── PROJECT 1: Crisis Sentinel (FEATURED HACKATHON) ─── -->
+        <div class="project-card glass-card reveal-item featured" data-index="0">
+          <div class="project-glow" style="--glow-clr:#f59e0b"></div>
+          <div class="project-featured-badge" style="color:#f59e0b;background:rgba(245,158,11,0.15);border-color:rgba(245,158,11,0.3)">🏆 DevClash 2026 Hackathon</div>
+          <div class="project-top">
+            <div class="project-icon" style="--p-clr:#f59e0b">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="project-links">
+              <a href="https://lnkd.in/dxractbS" target="_blank" rel="noopener" class="proj-link" title="Live Demo">🌐</a>
+              <a href="https://lnkd.in/dh9bYS_6" target="_blank" rel="noopener" class="proj-link" title="GitHub" id="projCrisisGitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag" style="color:#f59e0b;background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3)">Real-Time AI · Financial Risk</span>
+            <h3>Crisis Sentinel — Financial Crisis Early Warning System</h3>
+            <p>Built at DevClash 2026 National Hackathon (@ DYP DPU). AI-powered platform monitoring global macroeconomic signals to predict banking instability, market crash risks, and liquidity shortages with risk scores &amp; interpretable AI (SHAP).</p>
+          </div>
+          <div class="project-tech">
+            <span>Python</span><span>AI &amp; ML</span><span>SHAP (XAI)</span><span>Macro Analytics</span><span>Real-Time Signals</span>
+          </div>
+          <div class="project-footer">
+            <span class="proj-date">🏆 National Hackathon</span>
+            <a href="https://lnkd.in/dxractbS" target="_blank" rel="noopener" class="proj-view-btn" style="--btn-clr:#f59e0b">Live Demo →</a>
+          </div>
+        </div>
+
+        <!-- ─── PROJECT 2: Echo Clime ─── -->
+        <div class="project-card glass-card reveal-item" data-index="1">
+          <div class="project-glow" style="--glow-clr:#06b6d4"></div>
+          <div class="project-top">
+            <div class="project-icon" style="--p-clr:#06b6d4">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+            </div>
+            <div class="project-links">
+              <a href="https://lnkd.in/dF7KuUVD" target="_blank" rel="noopener" class="proj-link" title="Live Project">🌐</a>
+              <a href="https://lnkd.in/dmiGZMhu" target="_blank" rel="noopener" class="proj-link" aria-label="GitHub EchoClime" id="proj2GitHub" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag" style="color:#06b6d4;background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.3)">🚀 NxtWave Buildathon · Climate AI</span>
+            <h3>EchoClime 🌍 — Real-Time Climate Data Platform</h3>
+            <p>Built at the <strong>NxtWave Buildathon 🚀</strong>. Delivers real-time climate data analysis, smart environmental insights, and climate awareness that drives action across <strong>50+ Indian cities</strong>.</p>
+          </div>
+          <div class="project-tech">
+            <span>Real-time Climate Data</span><span>Smart Insights</span><span>Actionable Awareness</span><span>50+ Cities</span>
+          </div>
+          <div class="project-footer">
+            <span class="proj-date">🚀 NxtWave Buildathon</span>
+            <a href="https://lnkd.in/dF7KuUVD" target="_blank" rel="noopener" class="proj-view-btn" style="--btn-clr:#06b6d4">Live Project →</a>
+          </div>
+        </div>
+
+        <!-- ─── PROJECT 3: Personalized Learning System ─── -->
+        <div class="project-card glass-card reveal-item" data-index="2">
+          <div class="project-glow" style="--glow-clr:#a855f7"></div>
+          <div class="project-top">
+            <div class="project-icon" style="--p-clr:#a855f7">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/krishnahiwale/Personalized-Learning-Project" target="_blank" rel="noopener" class="proj-link" aria-label="GitHub Personalized Learning" id="projLearningGitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag" style="color:#a855f7;background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.3)">Machine Learning · EdTech AI</span>
+            <h3>Personalized Learning System</h3>
+            <p>Adaptive ML system recommending personalized learning paths based on user behavior. Developed model generating <strong>750+ paths</strong> and boosted user engagement by 20% using real-time pattern analysis.</p>
+          </div>
+          <div class="project-tech">
+            <span>Python</span><span>R</span><span>SQL</span><span>Recommendation ML</span>
+          </div>
+          <div class="project-footer">
+            <span class="proj-date">📈 +20% Engagement</span>
+            <a href="https://github.com/krishnahiwale/Personalized-Learning-Project" target="_blank" rel="noopener" class="proj-view-btn" style="--btn-clr:#a855f7">View on GitHub →</a>
+          </div>
+        </div>
+
+        <!-- ─── PROJECT 4: Crypto Power BI Dashboard ─── -->
+        <div class="project-card glass-card reveal-item" data-index="3">
+          <div class="project-glow" style="--glow-clr:#f59e0b"></div>
+          <div class="project-top">
+            <div class="project-icon" style="--p-clr:#f59e0b">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14.5v1.5h-2v-1.5c-1.4-.2-2.5-1.1-2.5-2.5h2c0 .6.4 1 1 1s1-.4 1-1-.4-1-1-1c-1.7 0-3-.9-3-2.5 0-1.4 1.1-2.3 2.5-2.5V7.5h2v1.5c1.4.2 2.3 1.1 2.3 2.5h-2c0-.5-.4-.9-1-.9s-1 .4-1 .9.4 1 1 1c1.7 0 3 .9 3 2.5 0 1.5-1.1 2.4-2.3 2.6z"/></svg>
+            </div>
+            <div class="project-links">
+              <a href="https://lnkd.in/ds6G9Eh7" target="_blank" rel="noopener" class="proj-link" aria-label="GitHub Crypto" id="projCryptoGitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag" style="color:#f59e0b;background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.3)">Financial Analytics · Power BI</span>
+            <h3>Crypto &amp; Stock Market Analysis Dashboard</h3>
+            <p>Interactive Power BI dashboard analysing price trends, market cap, OHLC volatility, and volume across BTC, ETH, DOGE, BNB, Monero, and NEM (2015–2021).</p>
+          </div>
+          <div class="project-tech">
+            <span>Power BI</span><span>Power Query</span><span>DAX</span><span>Financial Analytics</span>
+          </div>
+          <div class="project-footer">
+            <span class="proj-date">📊 Financial Viz</span>
+            <a href="https://lnkd.in/ds6G9Eh7" target="_blank" rel="noopener" class="proj-view-btn" style="--btn-clr:#f59e0b">View on GitHub →</a>
+          </div>
+        </div>
+
+        <!-- ─── PROJECT 5: Deloitte Job Simulation ─── -->
+        <div class="project-card glass-card reveal-item" data-index="4">
+          <div class="project-glow" style="--glow-clr:#06b6d4"></div>
+          <div class="project-top">
+            <div class="project-icon" style="--p-clr:#06b6d4">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/krishnahiwale" target="_blank" rel="noopener" class="proj-link" aria-label="GitHub Deloitte" id="proj1GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag" style="color:#06b6d4;background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.3)">Business Analytics · Forensic Tech</span>
+            <h3>Deloitte Australia — Data Analytics Simulation</h3>
+            <p>Completed Deloitte's Forage simulation on business analytics &amp; forensic tech. Designed Tableau dashboards and data classification models using Excel.</p>
+          </div>
+          <div class="project-tech">
+            <span>Tableau</span><span>Excel</span><span>Data Classification</span>
+          </div>
+          <div class="project-footer">
+            <span class="proj-date">📅 March 2026</span>
+            <a href="https://github.com/krishnahiwale" target="_blank" rel="noopener" class="proj-view-btn" style="--btn-clr:#06b6d4">View on GitHub →</a>
+          </div>
+        </div>
+
+        <!-- ─── PROJECT 6: Mental Health ─── -->
+        <div class="project-card glass-card reveal-item" data-index="5">
+          <div class="project-glow" style="--glow-clr:#ec4899"></div>
+          <div class="project-top">
+            <div class="project-icon" style="--p-clr:#ec4899">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/></svg>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/krishnahiwale/Mental-Health-Prediction" target="_blank" rel="noopener" class="proj-link" aria-label="GitHub Mental Health" id="proj3GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-tag" style="color:#ec4899;background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.3)">Machine Learning · Healthcare AI</span>
+            <h3>Mental Health Prediction System</h3>
+            <p>ML model to predict mental health conditions using real-world datasets. Applied classification algorithms with feature engineering for early detection.</p>
+          </div>
+          <div class="project-tech">
+            <span>Scikit-learn</span><span>Pandas</span><span>Classification</span>
+          </div>
+          <div class="project-footer">
+            <span class="proj-date">🏥 Healthcare AI</span>
+            <a href="https://github.com/krishnahiwale/Mental-Health-Prediction" target="_blank" rel="noopener" class="proj-view-btn" style="--btn-clr:#ec4899">View on GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GitHub CTA -->
+      <div class="github-cta">
+        <p>Want to see all my projects?</p>
+        <a href="https://github.com/krishnahiwale" target="_blank" rel="noopener" class="btn-primary" id="allProjectsBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span>Visit GitHub Profile</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CONTACT SECTION
+  ═══════════════════════════════════════ -->
+  <section id="contact">
+    <canvas id="contactCanvas"></canvas>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get In <em>Touch</em></h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-left">
+          <h3>Ready to collaborate?</h3>
+          <p>I'm actively looking for entry-level opportunities in Data Science, Analytics, and Machine Learning. Whether you have a project, an opportunity, or just want to connect — my inbox is always open!</p>
+
+          <div class="contact-links">
+            <a href="mailto:krishnahiwale15@gmail.com" class="contact-link" id="emailLink">
+              <div class="cl-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+              <div>
+                <span class="cl-label">Email</span>
+                <span class="cl-value">krishnahiwale15@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+918007099729" class="contact-link" id="phoneLink">
+              <div class="cl-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+              <div>
+                <span class="cl-label">Phone</span>
+                <span class="cl-value">+91 80070 99729</span>
+              </div>
+            </a>
+
+            <!-- ✅ CORRECT LinkedIn link -->
+            <a href="https://www.linkedin.com/in/krishna-hiwale-755b80280" target="_blank" rel="noopener" class="contact-link" id="linkedinLink">
+              <div class="cl-icon" style="--ci-clr:#0a66c2">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div>
+                <span class="cl-label">LinkedIn</span>
+                <span class="cl-value">krishna-hiwale-755b80280</span>
+              </div>
+            </a>
+
+            <!-- ✅ CORRECT GitHub link -->
+            <a href="https://github.com/krishnahiwale" target="_blank" rel="noopener" class="contact-link" id="githubLink">
+              <div class="cl-icon" style="--ci-clr:#e2e8f0">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </div>
+              <div>
+                <span class="cl-label">GitHub</span>
+                <span class="cl-value">github.com/krishnahiwale</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-right">
+          <form class="contact-form glass-card" id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="nameInput">Your Name *</label>
+              <input type="text" id="nameInput" placeholder="John Doe" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="emailInput">Your Email *</label>
+              <input type="email" id="emailInput" placeholder="john@example.com" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="subjectInput">Subject</label>
+              <input type="text" id="subjectInput" placeholder="Job Opportunity / Collaboration / Question" />
+            </div>
+            <div class="form-group">
+              <label for="messageInput">Message *</label>
+              <textarea id="messageInput" rows="4" placeholder="Tell me about the opportunity…" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit" id="submitBtn">
+              <span>Send Message</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+            </button>
+            <p class="form-note" id="formNote"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo-wrap">
+        <span class="logo-text">KH</span>
+        <span class="logo-dot"></span>
+      </div>
+      <p class="footer-tagline">Turning data into insights — one project at a time. 📊</p>
+      <div class="footer-social">
+        <!-- ✅ CORRECT GitHub -->
+        <a href="https://github.com/krishnahiwale" target="_blank" rel="noopener" class="footer-soc-btn" id="footerGitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <!-- ✅ CORRECT LinkedIn -->
+        <a href="https://www.linkedin.com/in/krishna-hiwale-755b80280" target="_blank" rel="noopener" class="footer-soc-btn" id="footerLinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:krishnahiwale15@gmail.com" class="footer-soc-btn" id="footerEmail" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Email
+        </a>
+      </div>
+      <p class="footer-copy">© 2026 Krishna Vijay Hiwale · Pune, Maharashtra, India · Crafted with ❤️ &amp; Three.js</p>
+    </div>
+  </footer>
+
+  <!-- Data files removed: images served directly for fast loading -->
+  <script src="app.js"></script>
+</body>
+</html>
